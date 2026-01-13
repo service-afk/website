@@ -9,6 +9,30 @@
     />
     <!-- 防止搜尋引擎索引（網站尚未公開） -->
     <meta name="robots" content="noindex, nofollow" />
+
+    <!-- 安全性設定 -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+      default-src 'self';
+      script-src 'self';
+      style-src 'self' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data:;
+      connect-src 'self';
+      frame-ancestors 'none';
+      base-uri 'self';
+      form-action 'self';
+    "
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+    />
+
     <title>高第理財顧問 | 專業理財規劃與貸款諮詢</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,6 +40,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -790,7 +815,7 @@
                 <div class="contact-icon">💬</div>
                 <div class="contact-text">
                   <span class="contact-label">LINE 諮詢</span>
-                  <span class="contact-value">@govloan</span>
+                  <span class="contact-value">@gaudy</span>
                 </div>
               </div>
               <div class="contact-item">

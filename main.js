@@ -168,50 +168,33 @@ function showNotification(message, type = "info") {
     existingNotification.remove();
   }
 
-  // 建立通知元素
+  // 建立通知元素（使用安全的 DOM 操作避免 XSS）
   const notification = document.createElement("div");
   notification.className = `notification notification-${type}`;
-  notification.innerHTML = `
-        <span class="notification-icon">${
-          type === "success" ? "✓" : type === "error" ? "✕" : "ℹ"
-        }</span>
-        <span class="notification-message">${message}</span>
-    `;
 
-  // 添加樣式
-  Object.assign(notification.style, {
-    position: "fixed",
-    top: "100px",
-    left: "50%",
-    transform: "translateX(-50%) translateY(-20px)",
-    padding: "1rem 1.5rem",
-    background:
-      type === "success" ? "#10b981" : type === "error" ? "#ef4444" : "#3b82f6",
-    color: "white",
-    borderRadius: "0.75rem",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
-    display: "flex",
-    alignItems: "center",
-    gap: "0.75rem",
-    fontSize: "0.9375rem",
-    fontWeight: "500",
-    zIndex: "10000",
-    opacity: "0",
-    transition: "all 0.3s ease",
-  });
+  // 使用 textContent 而非 innerHTML 避免 XSS
+  const iconSpan = document.createElement("span");
+  iconSpan.className = "notification-icon";
+  iconSpan.textContent =
+    type === "success" ? "✓" : type === "error" ? "✕" : "ℹ";
+
+  const messageSpan = document.createElement("span");
+  messageSpan.className = "notification-message";
+  messageSpan.textContent = message;
+
+  notification.appendChild(iconSpan);
+  notification.appendChild(messageSpan);
 
   document.body.appendChild(notification);
 
-  // 觸發動畫
+  // 觸發動畫（使用 CSS class 而非 inline styles）
   requestAnimationFrame(() => {
-    notification.style.opacity = "1";
-    notification.style.transform = "translateX(-50%) translateY(0)";
+    notification.classList.add("notification-visible");
   });
 
   // 自動移除
   setTimeout(() => {
-    notification.style.opacity = "0";
-    notification.style.transform = "translateX(-50%) translateY(-20px)";
+    notification.classList.remove("notification-visible");
     setTimeout(() => notification.remove(), 300);
   }, 4000);
 }
@@ -257,6 +240,13 @@ function initSmoothScroll() {
     anchor.addEventListener("click", function (e) {
       const href = this.getAttribute("href");
       if (href === "#") return;
+
+      // 安全性驗證：確保 href 只包含有效的 ID 格式（#開頭，後接字母數字底線連字號）
+      const validIdPattern = /^#[a-zA-Z][a-zA-Z0-9_-]*$/;
+      if (!validIdPattern.test(href)) {
+        console.warn("無效的錨點連結格式:", href);
+        return;
+      }
 
       e.preventDefault();
       const target = document.querySelector(href);
@@ -452,18 +442,30 @@ function initLoanCalculator() {
     }
   });
 
-  // 同步金額輸入框和滑桿
+  // 同步金額輸入框和滑桿（含邊界驗證）
   amountInput.addEventListener("input", function () {
-    amountSlider.value = this.value;
+    let value = parseInt(this.value) || 1;
+    const max = parseInt(amountSlider.max) || 200;
+    // 邊界驗證：確保值在有效範圍內
+    if (value < 1) value = 1;
+    if (value > max) value = max;
+    this.value = value;
+    amountSlider.value = value;
   });
 
   amountSlider.addEventListener("input", function () {
     amountInput.value = this.value;
   });
 
-  // 同步期限輸入框和滑桿
+  // 同步期限輸入框和滑桿（含邊界驗證）
   termInput.addEventListener("input", function () {
-    termSlider.value = this.value;
+    let value = parseInt(this.value) || 1;
+    const max = parseInt(termSlider.max) || 30;
+    // 邊界驗證：確保值在有效範圍內
+    if (value < 1) value = 1;
+    if (value > max) value = max;
+    this.value = value;
+    termSlider.value = value;
   });
 
   termSlider.addEventListener("input", function () {
@@ -483,9 +485,19 @@ function initLoanCalculator() {
    */
   function calculateLoan() {
     const loanType = loanTypeSelect.value;
-    const principal = parseFloat(amountInput.value) * 10000; // 轉換為元
-    const annualRate = parseFloat(rateInput.value) / 100;
-    const years = parseInt(termInput.value);
+
+    // NaN 檢查：確保輸入值有效，否則使用預設值
+    let principal = parseFloat(amountInput.value);
+    if (isNaN(principal) || principal <= 0) principal = 100;
+    principal = principal * 10000; // 轉換為元
+
+    let annualRate = parseFloat(rateInput.value);
+    if (isNaN(annualRate) || annualRate < 0) annualRate = 1.67;
+    annualRate = annualRate / 100;
+
+    let years = parseInt(termInput.value);
+    if (isNaN(years) || years <= 0) years = 5;
+
     const months = years * 12;
     const repaymentType = document.querySelector(
       'input[name="repaymentType"]:checked'
@@ -586,14 +598,3 @@ function initLoanCalculator() {
     resultSection.style.animation = "highlightResult 0.5s ease";
   }
 }
-
-// 添加結果高亮動畫樣式
-const style = document.createElement("style");
-style.textContent = `
-  @keyframes highlightResult {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); box-shadow: 0 25px 50px -12px rgba(0, 163, 163, 0.35); }
-    100% { transform: scale(1); }
-  }
-`;
-document.head.appendChild(style);

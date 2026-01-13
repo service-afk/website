@@ -1,0 +1,10 @@
+# 安全政策聯絡資訊
+# Security Policy Contact Information
+
+Contact: mailto:security@babybox.com.tw
+Preferred-Languages: zh-TW, en
+Canonical: https://loan.babybox.com.tw/.well-known/security.txt
+Expires: 2027-01-01T00:00:00.000Z
+
+# 感謝您協助我們維護網站安全
+# Thank you for helping us keep our website secure

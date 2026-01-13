@@ -1909,3 +1909,58 @@ h4 {
     color: var(--gray-600);
   }
 }
+
+/* ===================================
+   試算結果高亮動畫
+   =================================== */
+@keyframes highlightResult {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 163, 163, 0.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ===================================
+   通知訊息樣式
+   =================================== */
+.notification {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  padding: 1rem 1.5rem;
+  color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  z-index: 10000;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.notification.notification-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.notification-success {
+  background: #10b981;
+}
+
+.notification-error {
+  background: #ef4444;
+}
+
+.notification-info {
+  background: #3b82f6;
+}
