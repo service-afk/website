@@ -571,6 +571,25 @@ h4 {
   box-shadow: 0 0 0 3px rgba(0, 163, 163, 0.1);
 }
 
+.hero-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero-input-wrapper .form-input {
+  padding-right: 60px;
+}
+
+.hero-input-unit {
+  position: absolute;
+  right: 12px;
+  color: var(--gray-500);
+  font-size: 0.875rem;
+  font-weight: 500;
+  pointer-events: none;
+}
+
 .hero-wave {
   position: absolute;
   bottom: 0;
