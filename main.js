@@ -304,10 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const loanData = {
         "youth-business": { rate: 1.67, maxAmount: 200, maxTerm: 7 },
         "first-home": { rate: 1.775, maxAmount: 800, maxTerm: 30 },
-        student: { rate: 1.15, maxAmount: 100, maxTerm: 8 },
-        agriculture: { rate: 1.5, maxAmount: 500, maxTerm: 15 },
         sme: { rate: 2.0, maxAmount: 1500, maxTerm: 10 },
-        labor: { rate: 1.718, maxAmount: 10, maxTerm: 3 },
       };
 
       // 同步貸款類型
@@ -405,10 +402,7 @@ function initLoanCalculator() {
       maxTerm: 30,
       name: "青年首購房貸",
     },
-    student: { rate: 1.15, maxAmount: 100, maxTerm: 8, name: "就學貸款" },
-    agriculture: { rate: 1.5, maxAmount: 500, maxTerm: 15, name: "農業貸款" },
     sme: { rate: 2.0, maxAmount: 1500, maxTerm: 10, name: "中小企業貸款" },
-    labor: { rate: 1.718, maxAmount: 10, maxTerm: 3, name: "勞工紓困貸款" },
   };
 
   // 當貸款類型變更時更新相關欄位
