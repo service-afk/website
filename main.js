@@ -305,6 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "youth-business": { rate: 1.67, maxAmount: 200, maxTerm: 7 },
         "first-home": { rate: 1.775, maxAmount: 800, maxTerm: 30 },
         sme: { rate: 2.0, maxAmount: 1500, maxTerm: 10 },
+        phoenix: { rate: 1.95, maxAmount: 200, maxTerm: 7 },
       };
 
       // 同步貸款類型
@@ -403,6 +404,12 @@ function initLoanCalculator() {
       name: "青年首購房貸",
     },
     sme: { rate: 2.0, maxAmount: 1500, maxTerm: 10, name: "中小企業貸款" },
+    phoenix: {
+      rate: 1.95,
+      maxAmount: 200,
+      maxTerm: 7,
+      name: "微型創業鳳凰貸款",
+    },
   };
 
   // 當貸款類型變更時更新相關欄位
