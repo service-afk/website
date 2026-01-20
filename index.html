@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
@@ -124,8 +124,7 @@
               <p>輸入資料，立即了解可貸額度</p>
               <div class="mini-form" id="heroCalculator">
                 <select class="form-select" id="heroLoanType">
-                  <option value="">選擇貸款類型</option>
-                  <option value="youth-business">青年創業貸款</option>
+                  <option value="youth-business" selected>青年創業貸款</option>
                   <option value="first-home">青年首購房貸</option>
                   <option value="sme">中小企業貸款</option>
                   <option value="phoenix">微型創業鳳凰貸款</option>
@@ -135,6 +134,7 @@
                   id="heroLoanAmount"
                   class="form-input"
                   placeholder="預計貸款金額（萬元）"
+                  value="100"
                 />
                 <button class="btn btn-accent" id="heroCalculateBtn">
                   立即試算
@@ -311,7 +311,7 @@
                   type="number"
                   id="calcTerm"
                   class="calc-input"
-                  value="5"
+                  value="7"
                   min="1"
                   max="30"
                 />
@@ -321,7 +321,7 @@
                 type="range"
                 id="calcTermSlider"
                 class="calc-slider"
-                value="5"
+                value="7"
                 min="1"
                 max="7"
               />

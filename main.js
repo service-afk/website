@@ -205,7 +205,7 @@ function showNotification(message, type = "info") {
 function initScrollReveal() {
   // 為需要動畫的元素添加 data-reveal 屬性
   const revealElements = document.querySelectorAll(
-    ".service-card, .feature-item, .process-step, .faq-item"
+    ".service-card, .feature-item, .process-step, .faq-item",
   );
 
   revealElements.forEach((el) => {
@@ -224,7 +224,7 @@ function initScrollReveal() {
     {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px",
-    }
+    },
   );
 
   document.querySelectorAll("[data-reveal]").forEach((el) => {
@@ -329,23 +329,22 @@ document.addEventListener("DOMContentLoaded", function () {
         amount = selectedData.maxAmount;
         showNotification(
           `此貸款類型最高額度為 ${selectedData.maxAmount} 萬元，已自動調整`,
-          "info"
+          "info",
         );
       }
       calcAmount.value = amount;
       calcAmountSlider.value = amount;
 
-      // 設定預設期限（取最大期限的一半或 5 年）
-      const defaultTerm = Math.min(5, Math.ceil(selectedData.maxTerm / 2));
-      calcTerm.value = defaultTerm;
-      calcTermSlider.value = defaultTerm;
+      // 設定期限為最大值
+      calcTerm.value = selectedData.maxTerm;
+      calcTermSlider.value = selectedData.maxTerm;
 
       // 顯示通知
       const loanTypeName =
         heroLoanType.options[heroLoanType.selectedIndex].text;
       showNotification(
         `正在為您計算 ${loanTypeName} ${amount} 萬元的方案...`,
-        "success"
+        "success",
       );
 
       // 滾動到試算表區塊
@@ -425,21 +424,18 @@ function initLoanCalculator() {
       amountSlider.max = data.maxAmount;
       maxAmountLabel.textContent = `${data.maxAmount} 萬`;
 
-      // 如果當前金額超過最大值，調整為最大值
-      if (parseInt(amountInput.value) > data.maxAmount) {
-        amountInput.value = data.maxAmount;
-        amountSlider.value = data.maxAmount;
-      }
+      // 設定金額為 100 萬或最大額度（取較小值）
+      const defaultAmount = Math.min(100, data.maxAmount);
+      amountInput.value = defaultAmount;
+      amountSlider.value = defaultAmount;
 
       // 更新期限滑桿範圍
       termSlider.max = data.maxTerm;
       maxTermLabel.textContent = `${data.maxTerm} 年`;
 
-      // 如果當前期限超過最大值，調整為最大值
-      if (parseInt(termInput.value) > data.maxTerm) {
-        termInput.value = data.maxTerm;
-        termSlider.value = data.maxTerm;
-      }
+      // 設定期限為最大值
+      termInput.value = data.maxTerm;
+      termSlider.value = data.maxTerm;
     }
   });
 
@@ -478,6 +474,15 @@ function initLoanCalculator() {
     calculateLoan();
   });
 
+  // 初始化：設定年限為當前貸款類型的最大值
+  const initialData = loanData[loanTypeSelect.value];
+  if (initialData) {
+    termInput.value = initialData.maxTerm;
+    termSlider.value = initialData.maxTerm;
+    termSlider.max = initialData.maxTerm;
+    maxTermLabel.textContent = `${initialData.maxTerm} 年`;
+  }
+
   // 執行初始計算
   calculateLoan();
 
@@ -501,7 +506,7 @@ function initLoanCalculator() {
 
     const months = years * 12;
     const repaymentType = document.querySelector(
-      'input[name="repaymentType"]:checked'
+      'input[name="repaymentType"]:checked',
     ).value;
 
     let monthlyPayment, totalPayment, totalInterest;
@@ -561,16 +566,16 @@ function initLoanCalculator() {
     // 更新各項數值
     document.getElementById("resultLoanType").textContent = data.loanType;
     document.getElementById("monthlyPayment").textContent = formatCurrency(
-      data.monthlyPayment
+      data.monthlyPayment,
     );
     document.getElementById("principal").textContent = formatCurrency(
-      data.principal
+      data.principal,
     );
     document.getElementById("totalInterest").textContent = formatCurrency(
-      data.totalInterest
+      data.totalInterest,
     );
     document.getElementById("totalPayment").textContent = formatCurrency(
-      data.totalPayment
+      data.totalPayment,
     );
     document.getElementById("totalPeriods").textContent = `${data.periods} 期`;
 
@@ -585,12 +590,10 @@ function initLoanCalculator() {
     chartPrincipal.style.width = `${principalRatio}%`;
     chartInterest.style.width = `${interestRatio}%`;
 
-    chartPrincipal.querySelector(
-      "span"
-    ).textContent = `本金 ${principalRatio.toFixed(1)}%`;
-    chartInterest.querySelector(
-      "span"
-    ).textContent = `利息 ${interestRatio.toFixed(1)}%`;
+    chartPrincipal.querySelector("span").textContent =
+      `本金 ${principalRatio.toFixed(1)}%`;
+    chartInterest.querySelector("span").textContent =
+      `利息 ${interestRatio.toFixed(1)}%`;
 
     // 添加動畫效果
     const resultSection = document.getElementById("calculatorResult");
