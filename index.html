@@ -77,21 +77,12 @@
           <span class="hero-badge">🎯 專業理財顧問服務</span>
           <h1>高第理財顧問<br /><span class="highlight">專業諮詢平台</span></h1>
           <p class="hero-description">
-            專業協助您規劃財務與申辦各類貸款方案<br />
-            青年創業、房屋購置、一站式服務
+            專業協助您計畫書代寫、規劃財務與申辦各類貸款方案
           </p>
           <div class="hero-stats">
             <div class="stat-item">
               <span class="stat-number">25年+</span>
-              <span class="stat-label">代書經驗</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">98%</span>
-              <span class="stat-label">核貸成功率</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">50萬+</span>
-              <span class="stat-label">服務人次</span>
+              <span class="stat-label">理財代書經驗</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">0元</span>
@@ -125,8 +116,6 @@
               <div class="mini-form" id="heroCalculator">
                 <select class="form-select" id="heroLoanType">
                   <option value="youth-business" selected>青年創業貸款</option>
-                  <option value="first-home">青年首購房貸</option>
-                  <option value="sme">中小企業貸款</option>
                   <option value="phoenix">微型創業鳳凰貸款</option>
                 </select>
                 <input
@@ -167,62 +156,132 @@
           <p>提供各類政府補助貸款方案，滿足您不同階段的資金需求</p>
         </div>
 
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">
-              <span>🚀</span>
+        <div class="loan-full-cards">
+          <!-- 青年創業貸款 -->
+          <div class="loan-full-card">
+            <div class="loan-card-summary">
+              <div class="loan-card-header">
+                <span class="loan-icon">🚀</span>
+                <h3>青年創業貸款</h3>
+              </div>
+              <p class="loan-desc">
+                18-45歲青年專屬，政府補貼利息，最高可貸 200 萬元
+              </p>
+              <ul class="loan-features">
+                <li>✓ 利率優惠 1.67% 起</li>
+                <li>✓ 前 2 年免息</li>
+                <li>✓ 還款期限最長 7 年</li>
+              </ul>
             </div>
-            <h3>青年創業貸款</h3>
-            <p>18-45歲青年專屬，政府補貼利息，最高可貸 200 萬元</p>
-            <ul class="service-features">
-              <li>✓ 利率優惠 1.67% 起</li>
-              <li>✓ 前 2 年免息</li>
-              <li>✓ 還款期限最長 7 年</li>
-            </ul>
-            <a href="#apply" class="service-link">了解更多 →</a>
+            <details class="loan-eligibility-toggle">
+              <summary class="eligibility-toggle-btn">
+                <span>📋 查看申請資格</span>
+                <svg
+                  class="toggle-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </summary>
+              <div class="loan-eligibility">
+                <div class="eligibility-section">
+                  <h5>一、登記代表人或負責人為本國設有戶籍國民</h5>
+                  <ul>
+                    <li>
+                      辦理公司、商業、有限合夥登記未滿8年之中小企業：
+                      <ul>
+                        <li>
+                          於經濟部商工登記公示資料查詢服務網站查詢，實收資本額1億元以下。
+                        </li>
+                        <li>
+                          實收資本額超過1億元者，為最近12個月投保勞保員工人數平均未滿200人。
+                        </li>
+                      </ul>
+                    </li>
+                    <li>代表人或負責人年滿18歲至45歲。</li>
+                    <li>以自然人名義之出資額占企業體實收資本額20%以上。</li>
+                    <li>
+                      代表人或負責人3年內受過政府認可之單位開辦創業輔導相關課程至少20小時或取得2學分證明。
+                    </li>
+                  </ul>
+                </div>
+                <div class="eligibility-section">
+                  <h5>二、登記代表人或負責人為非本國設有戶籍國民</h5>
+                  <ul>
+                    <li>
+                      辦理公司、商業、有限合夥登記未滿8年之中小企業：
+                      <ul>
+                        <li>
+                          於經濟部商工登記公示資料查詢服務網站查詢，實收資本額1億元以下。
+                        </li>
+                        <li>
+                          實收資本額超過1億元者，最近12個月投保勞保員工人數平均未滿200人。
+                        </li>
+                      </ul>
+                    </li>
+                    <li>代表人或負責人年滿18歲至45歲。</li>
+                    <li>以自然人名義之出資額占企業體實收資本額20%以上。</li>
+                    <li>
+                      代表人或負責人持有本國政府核發之創業家簽證、就業金卡或有效居留證。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <a href="#apply" class="btn btn-primary btn-lg">立即諮詢</a>
           </div>
 
-          <div class="service-card featured">
-            <div class="featured-badge">熱門</div>
-            <div class="service-icon">
-              <span>🏠</span>
+          <!-- 微型創業鳳凰貸款 -->
+          <div class="loan-full-card">
+            <div class="loan-card-summary">
+              <div class="loan-card-header">
+                <span class="loan-icon">🦋</span>
+                <h3>微型創業鳳凰貸款</h3>
+              </div>
+              <p class="loan-desc">勞動部專案，支持婦女及中高齡創業圓夢</p>
+              <ul class="loan-features">
+                <li>✓ 前 2 年政府全額補貼利息</li>
+                <li>✓ 貸款額度最高 200 萬</li>
+                <li>✓ 還款期限最長 7 年</li>
+              </ul>
             </div>
-            <h3>青年首購房貸</h3>
-            <p>首次購屋青年專案，超低利率，輕鬆成家</p>
-            <ul class="service-features">
-              <li>✓ 利率 1.775% 起</li>
-              <li>✓ 貸款額度最高 800 萬</li>
-              <li>✓ 還款期限最長 30 年</li>
-            </ul>
-            <a href="#apply" class="service-link">了解更多 →</a>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <span>🏢</span>
-            </div>
-            <h3>中小企業貸款</h3>
-            <p>協助企業周轉、擴展業務的政府優惠方案</p>
-            <ul class="service-features">
-              <li>✓ 額度最高 1500 萬</li>
-              <li>✓ 信保基金保證</li>
-              <li>✓ 快速核貸</li>
-            </ul>
-            <a href="#apply" class="service-link">了解更多 →</a>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <span>🦋</span>
-            </div>
-            <h3>微型創業鳳凰貸款</h3>
-            <p>勞動部專案，支持婦女及中高齡創業圓夢</p>
-            <ul class="service-features">
-              <li>✓ 前 2 年政府全額補貼利息</li>
-              <li>✓ 貸款額度最高 200 萬</li>
-              <li>✓ 還款期限最長 7 年</li>
-            </ul>
-            <a href="#apply" class="service-link">了解更多 →</a>
+            <details class="loan-eligibility-toggle">
+              <summary class="eligibility-toggle-btn">
+                <span>📋 查看申請資格</span>
+                <svg
+                  class="toggle-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </summary>
+              <div class="loan-eligibility">
+                <div class="eligibility-section">
+                  <h5>貸款對象及申請資格</h5>
+                  <ul>
+                    <li>未滿45歲之成年女性。</li>
+                    <li>年滿45歲至65歲者。</li>
+                    <li>65歲以下，且設籍於離島之成年人。</li>
+                    <li>
+                      三年內曾參與政府創業研習課程至少十八小時，並經創業諮詢輔導。
+                    </li>
+                    <li>所營事業完成登記未超過五年。</li>
+                    <li>所營事業員工數（不含負責人）未滿五人。</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <a href="#apply" class="btn btn-primary btn-lg">立即諮詢</a>
           </div>
         </div>
       </div>
@@ -249,22 +308,6 @@
                   data-term="7"
                 >
                   青年創業貸款 (利率 1.67%)
-                </option>
-                <option
-                  value="first-home"
-                  data-rate="1.775"
-                  data-max="800"
-                  data-term="30"
-                >
-                  青年首購房貸 (利率 1.775%)
-                </option>
-                <option
-                  value="sme"
-                  data-rate="2.0"
-                  data-max="1500"
-                  data-term="10"
-                >
-                  中小企業貸款 (利率 2.0%)
                 </option>
                 <option
                   value="phoenix"
@@ -519,28 +562,7 @@
                   <td data-label="最長年限">7 年</td>
                   <td data-label="適用對象">18-45歲創業青年</td>
                 </tr>
-                <tr class="featured-row">
-                  <td data-label="貸款類型">
-                    <strong>🏠 青年首購房貸</strong>
-                  </td>
-                  <td data-label="年利率">
-                    <span class="rate-badge hot">1.775%</span>
-                  </td>
-                  <td data-label="最高額度">800 萬</td>
-                  <td data-label="最長年限">30 年</td>
-                  <td data-label="適用對象">首次購屋青年</td>
-                </tr>
-                <tr>
-                  <td data-label="貸款類型">
-                    <strong>🏢 中小企業貸款</strong>
-                  </td>
-                  <td data-label="年利率">
-                    <span class="rate-badge">2.0%</span>
-                  </td>
-                  <td data-label="最高額度">1500 萬</td>
-                  <td data-label="最長年限">10 年</td>
-                  <td data-label="適用對象">中小企業主</td>
-                </tr>
+
                 <tr>
                   <td data-label="貸款類型">
                     <strong>🦋 微型創業鳳凰貸款</strong>
@@ -579,50 +601,12 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <path d="M12 22s-8-4-8-10V5l8-3 8 3v7c0 6-8 10-8 10z" />
-                <path d="M9 12l2 2 4-4" />
-              </svg>
-            </div>
-            <h3>政府核准機構</h3>
-            <p>合法立案金融服務機構，所有服務符合政府法規</p>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 6v6l4 2" />
               </svg>
             </div>
             <h3>快速審核</h3>
             <p>專業團隊協助，最快 3 個工作天完成審核</p>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M12 2a10 10 0 0 1 10 10c0 5.5-10 12-10 12S2 17.5 2 12A10 10 0 0 1 12 2z"
-                />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-            </div>
-            <h3>全台服務</h3>
-            <p>服務據點遍布全台，提供在地化貼心服務</p>
           </div>
 
           <div class="feature-item">
@@ -642,7 +626,7 @@
               </svg>
             </div>
             <h3>專業團隊</h3>
-            <p>超過 25 年代書經驗顧問一對一服務，提供最佳方案建議</p>
+            <p>超過 25 年理財代書經驗顧問一對一服務，提供最佳方案建議</p>
           </div>
 
           <div class="feature-item">
